@@ -1,0 +1,101 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>设置文件路径</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../static/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../static/layuiadmin/style/admin.css" media="all">
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-body" style="padding: 15px;">
+            <form class="layui-form" action="" lay-filter="component-form-group">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">hexo-music.js路径:</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="musicjsPath_hexo" lay-verify="required" placeholder="请输入hexo music.js路径" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">web项目music.js路径:</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="musicjsPath_web" lay-verify="required" placeholder="请输入web music.js路径" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+
+
+                <div class="layui-form-item layui-layout-admin">
+                    <div class="layui-input-block">
+                        <div class="layui-footer" style="left: 0;">
+                            <button style="display: none" class="layui-btn" id="component-form-demo1" lay-submit="" lay-filter="component-form-demo1">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="../static/layuiadmin/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '../static/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'form', 'laydate'], function(){
+        var $ = layui.$
+            ,admin = layui.admin
+            ,element = layui.element
+            ,layer = layui.layer
+            ,laydate = layui.laydate
+            ,form=layui.form
+
+        var status;
+
+        layer.alert('请填写您的文件路径,否则无法修改文件',{icon:6});
+
+        form.on('switch(component-form-switchTest)', function(data){
+            // data.elem.checked = true;//强制将checkbox为checked,否则会传值NULL
+            var isLockVal = $("#status").val();
+            isLockVal == '2' ? $("#status").val('1') : $("#status").val('2');//修改值
+
+            /*  layer.msg('状态：' + isLockVal , {
+                offset: '6px'
+              });*/
+        });
+
+
+
+        /* 监听提交 */
+        form.on('submit(component-form-demo1)', function(data){
+            $.ajax({
+                url: layui.setter.serverUrl + '/setPath',
+                type: "get",
+                data: data.field,
+                dataType: "json",
+                success: function (data) {
+                    layer.msg(data.msg);
+                    if (data.code == "200") {
+                        var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                        parent.layer.close(index);
+                      //父页面刷新  parent.window.location.reload();
+                    }
+                }
+            });
+            //layer.alert(JSON.stringify(data.field)
+            return false;
+        });
+    });
+</script>
+</body>
+</html>

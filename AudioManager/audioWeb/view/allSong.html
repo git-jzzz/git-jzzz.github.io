@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        <!--json样式-->
+        pre {outline: 1px solid #ccc; }
+        .string { color: green; }
+        .number { color: darkorange; }
+        .boolean { color: blue; }
+        .null { color: magenta; }
+        .key { color: red; }
+    </style>
+</head>
+
+<body>
+<h2>复制{}里面的json数据粘贴至你Aplayer的music.js中即可  歌词文件路径后台接口保存</h2>
+<pre id="allSong"></pre>   <!--必须使用这个标签，否则显示的json没有格式化-->
+</body>
+<script src="../static/layuiadmin/layui/layui.js"></script>
+<script>
+
+    layui.config({
+        base: '../static/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index' ], function () {
+         var $=layui.$;
+
+            $.ajax({
+            url: layui.setter.serverUrl + '/getAllSong',
+            type: "get",
+            dataType: "json",
+            success: function (data) {
+                var audio=data.data;
+                if(audio==null){
+                    $("#allSong").html(data.msg);
+                }else{
+                    $("#allSong").html(jsonShowFn(audio));
+                }
+            }
+        });
+
+        /***
+         * 展示json样式
+         * @param json
+         * @returns {string|*}
+         */
+       function jsonShowFn(json){
+            if (typeof json != 'string') {
+                json = JSON.stringify(json, undefined, 2);
+            }
+            json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function(match) {
+                var cls = 'number';
+                if (/^"/.test(match)) {
+                    if (/:$/.test(match)) {
+                        cls = 'key';
+                    } else {
+                        cls = 'string';
+                    }
+                } else if (/true|false/.test(match)) {
+                    cls = 'boolean';
+                } else if (/null/.test(match)) {
+                    cls = 'null';
+                }
+                return '<span class="' + cls + '">' + match + '</span>';
+            });
+        }
+    });
+</script>
+</html>
