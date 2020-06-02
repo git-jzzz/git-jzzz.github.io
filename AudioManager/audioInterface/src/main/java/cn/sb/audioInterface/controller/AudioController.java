@@ -42,12 +42,12 @@ public class AudioController {
     //music.js路径
     private static  String musicjsPath_hexo="D:\\hexo\\source\\dist\\music.js";
 
-    private static  String musicjsPath_web="D:\\hexo-source\\git-jzzz.github.io\\AudioManager\\audioWeb\\static\\js\\music.js";
+    private static  String musicjsPath_web="D:\\hexo\\AudioManager\\audioWeb\\static\\js\\music.js";
 
     //歌词存储路径
     private static String lrcPath_hexo="D:\\hexo\\source\\lrc\\";
 
-    private static String lrcPath_web="D:\\hexo-source\\git-jzzz.github.io\\AudioManager\\audioWeb\\view\\lrc\\";
+    private static String lrcPath_web="D:\\hexo\\AudioManager\\audioWeb\\view\\lrc\\";
 
 
     /***
