@@ -187,3 +187,9 @@ baidu_url_submit:
   path: baidu_urls.txt ## 文本文档的地址，新链接会保存在此文本文档里
 # Easily enable fast Ajax navigation on your website.
 # Dependencies: https://github.com/theme-next/theme-next-pjax
+
+nofollow:
+    enable: true
+    exclude:
+    - https://jzzs.xn--ses554g
+

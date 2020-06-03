@@ -5,12 +5,11 @@ tags:
 categories: yx-jz
 copyright: true
 abbrlink: bb44ba11
-date: 2020-05-20 20:37:50
+description: <pre> 					Begin-第一篇博客....</pre>
+date: 2020-05-20 20:34:52
 ---
 
 # **yuxinyuxin**
-
-<!-- more -->
 
 ## **jz每个今天都会爱你**
 

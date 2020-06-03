@@ -3,20 +3,20 @@ title: github搭建hexo博客
 tags:
   - hexo搭建
 categories:
-  - 博客
+  - hexo
 copyright: true
 keywords:
   - HEXO
   - HEXO部署
   - hexo主题配置
-description: 总结一下使用Hexo搭建博客的过程详细。
+  - seo优化
+  - pjax
+  - 域名
+  - github/coding双线部署
+description: <pre>					记录一下hexo的详细搭建过程<br/>			初步搭建hexo、主题风格设置、Aplayer播放器	pjax无刷新加载、看板娘<br/>		hexo源码保存、github/coding双线部署提速、设置域名访问、提交搜索引擎/seo优化<br/>					warning:一开始我只想弄个全局播放器........</pre>
 abbrlink: 5d5a4712
 date: 2020-06-01 20:14:55
 ---
-
-​		现在市面上的博客有很多，如CSBN，简书，博客园等平台,简单注册一下就可以使用了，可以直接在上面进行写作,但是呢总会有一点缺点，比如广告啊啥的。自己购买域名和服务器，搭建博客的成本又有点高。所以可以直接在github page平台上托管我们的博客,hexo就是一个可以快速部署的博客框架。
-
-<!--more-->
 
 ## hexo搭建(这里给出几条链接 (前人栽树后人乘凉嘛hhhh))
 
@@ -97,7 +97,7 @@ date: 2020-06-01 20:14:55
 
 ​		目前看到的很多的pc端页面点击页面某块链接的时候，原本应该是页面的某个部分更新的，但是却整个页面刷新，整个页面都闪了一下。特别是看某些图集的页面，一个页面本来就几十张图看，看完眼睛都闪瞎了。用ajax加载数据可以解决这个问题，但是也会造成另外的问题，页面无法前进和后退。支持浏览器历史的， 刷新页面的同时， 浏览器地址栏位上面的地址也是会更改， 用浏览器的回退功能也能够回退到上一个页面。要实现这样的功能， pjax就应运而生。
 
- 	基于ajax+history.pushState的新技术，该技术可以无刷新改变页面的内容，并且可以改变页面的URL。HTML5的新API扩展了window.history，使历史记录点更加开放了。可以存储当前历史记录点、替换当前历史记录点、监听历史记录点。github上有开源 [项目地址](https://github.com/defunkt/jquery-pjax),可以查看文档，不过已经很久没有更新了。
+​						基于ajax+history.pushState的新技术，该技术可以无刷新改变页面的内容，并且可以改变页面的URL。HTML5的新API扩展了window.history，使历史记录点更加开放了。可以存储当前历史记录点、替换当前历史记录点、监听历史记录点。github上有开源 [项目地址](https://github.com/defunkt/jquery-pjax),可以查看文档，不过已经很久没有更新了。
 
 ​				这里写了一个小例子  
 
@@ -397,9 +397,9 @@ function valine(){
 
 
 
-## 看到左下角那个萌萌哒的看板娘了吗?
+## 看到左下角那个萌萌哒的小萝莉了吗?
 
-放到你所需要的位置即可:
+以下代码放到你所需要的位置即可:
 
 ```htm
  <!--Live-2D看板娘模型-->
@@ -546,4 +546,39 @@ github的CDN被墙了，由于网络代理商的原因，所以访问下载很�
 
 windows打开cmd控制器  输入ipconfig /flushdns 刷新dns  再次访问  速度有很大提升；
 
-# 
+有时候也因为生成的html文件有大量空白,一定程度上也会影响网页的加载,所以我们可以对文件进行压缩:
+
+[使用hexo-neat插件压缩页面静态资源](https://blog.csdn.net/lewky_liu/article/details/82432003)
+
+## 自定义域名、github/coding双线部署加速:
+
+github毕竟是国外的网站，访问起来经常丢失，很恼火呀有木有，所以我们可以使hexo双线部署
+
+国内访问coding ,国外访问github,提高访问速度
+
+链接码上:
+
+[coding首页]([https://jzzs.coding.net](https://jzzs.coding.net/))
+
+[阿里云解析](https://dns.console.aliyun.com/#/dns/domainList)
+
+[CSDN 博客园，简书 主页 自定义域名](https://blog.csdn.net/a1064072510/article/details/90442555)
+
+[hexo自定义域名以及解析](https://blog.csdn.net/xfdywy/article/details/79720070)
+
+[加速自己的hexo，使用GitHub+Coding实现国内外网站加速](https://www.cnblogs.com/sunhang32/p/11969964.html)
+
+## hexo提交搜索引擎
+
+到了这里，离装逼还差最后一步  引擎是搜索不到你的博客的
+
+链接:
+
+[hexo提交搜索引擎](https://www.cnblogs.com/tengj/p/5357879.html)
+
+[HEXO SEO 高级优化](https://blog.csdn.net/lzy98/article/details/81140704)
+
+等啊等啊等吧.........
+
+>jzzaiyx
+
