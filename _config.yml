@@ -14,9 +14,16 @@ timezone: ''
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://git-jzzz.github.io
+url: https://jzzs.xn--ses554g
 root: /
-permalink: :year/:month/:day/:title/
+# url优化插件  npm install hexo-abbrlink --save
+permalink: post/:abbrlink.html
+abbrlink:
+  alg: crc32  # 算法：crc16(default) and crc32
+  rep: hex    # 进制：dec(default) and hex
+#permalink: :year/:month/:day/:title/
+#permalink: :id.html #hexo自带
+
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -37,6 +44,7 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
+  - CNAME
   - README.md
   - baidu_verify_U0EYg4ME7B.html
 
@@ -119,8 +127,11 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
-  repo: https://github.com/git-jzzz/git-jzzz.github.io.git
+- type: baidu_url_submitter  ##新添加
+- type: git
+  repo: 
+    github: https://github.com/git-jzzz/git-jzzz.github.io.git
+    coding: https://e.coding.net/jzzs/jzzs.git
   branch: master
 
 # Extensions
@@ -164,6 +175,15 @@ neat_js:
     - '**/*.min.js'
     - '**/jquery.fancybox.pack.js'
     - '**/index.js' 
+sitemap:
+  path: sitemap.xml    
+baidusitemap: 
+  path: baidusitemap.xml
 
+baidu_url_submit:
+  count: 3 ## 比如3，代表提交最新的三个链接
+  host: jzzs.xn--ses554g  ## 在百度站长平台中注册的域名
+  token: {hOtvnAtFPNpaw5MP} ## 请注意这是您的秘钥，请不要发布在公众仓库里!
+  path: baidu_urls.txt ## 文本文档的地址，新链接会保存在此文本文档里
 # Easily enable fast Ajax navigation on your website.
 # Dependencies: https://github.com/theme-next/theme-next-pjax

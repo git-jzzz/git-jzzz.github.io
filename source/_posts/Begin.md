@@ -1,10 +1,11 @@
 ---
 title: Begin
-date: 2020-05-20 20:37:50
 tags:
- - yuxin
+  - yuxin
 categories: yx-jz
 copyright: true
+abbrlink: bb44ba11
+date: 2020-05-20 20:37:50
 ---
 
 # **yuxinyuxin**

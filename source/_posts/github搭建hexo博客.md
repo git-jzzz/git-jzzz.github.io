@@ -1,17 +1,24 @@
 ---
 title: github搭建hexo博客
-date: 2020-06-01 20:14:55
-tags: [hexo搭建]
+tags:
+  - hexo搭建
 categories:
-- 博客
+  - 博客
 copyright: true
+keywords:
+  - HEXO
+  - HEXO部署
+  - hexo主题配置
+description: 总结一下使用Hexo搭建博客的过程详细。
+abbrlink: 5d5a4712
+date: 2020-06-01 20:14:55
 ---
 
 ​		现在市面上的博客有很多，如CSBN，简书，博客园等平台,简单注册一下就可以使用了，可以直接在上面进行写作,但是呢总会有一点缺点，比如广告啊啥的。自己购买域名和服务器，搭建博客的成本又有点高。所以可以直接在github page平台上托管我们的博客,hexo就是一个可以快速部署的博客框架。
 
 <!--more-->
 
-# hexo搭建(这里给出几条链接 (前人栽树后人乘凉嘛hhhh))
+## hexo搭建(这里给出几条链接 (前人栽树后人乘凉嘛hhhh))
 
 搭建 hexo博客  需要 git、node.js环境
 
@@ -25,7 +32,7 @@ copyright: true
 
 到这里呢  基本上是搭建好了  不喜欢作的话已经可以了（建议不要作~）
 
-# 下面呢是一些主题风格样式的设置 
+## 下面呢是一些主题风格样式的设置 
 
 [hexo新建博客页面和next主题相关配置](https://blog.csdn.net/weixin_43216105/article/details/83449928)
 
@@ -43,13 +50,13 @@ copyright: true
 
 [Hexo Next主题  文章末尾添加版权信息](https://cloud.tencent.com/developer/article/1482137)
 
-# hexo添加Aplayer播放器
+## hexo添加Aplayer播放器
 
 ​		你可以按照[官方文档](https://aplayer.js.org/#/home)去研究一下,也可以直接拷贝我github上面的[dist文件夹](https://github.com/git-jzzz/git-jzzz.github.io/tree/hexo/source)
 
 ​	放到你hexo/source目录下,在你想要放入的位置引用即可
 
-##### 			自己写了一个[aplayer的管理](https://github.com/git-jzzz/git-jzzz.github.io/tree/hexo/AudioManager),方便歌曲的添加删除，以及设置到music.js的具体目录
+​			自己写了一个[aplayer的管理](https://github.com/git-jzzz/git-jzzz.github.io/tree/hexo/AudioManager),方便歌曲的添加删除，以及设置到music.js的具体目录
 
 ​					springboot+layuiAdmin前后端分离
 
@@ -86,13 +93,13 @@ copyright: true
 
 也可以让hexo全站实现pjax无刷新加载~~
 
-# 添加pjax实现页面无刷新加载
+## 添加pjax实现页面无刷新加载
 
 ​		目前看到的很多的pc端页面点击页面某块链接的时候，原本应该是页面的某个部分更新的，但是却整个页面刷新，整个页面都闪了一下。特别是看某些图集的页面，一个页面本来就几十张图看，看完眼睛都闪瞎了。用ajax加载数据可以解决这个问题，但是也会造成另外的问题，页面无法前进和后退。支持浏览器历史的， 刷新页面的同时， 浏览器地址栏位上面的地址也是会更改， 用浏览器的回退功能也能够回退到上一个页面。要实现这样的功能， pjax就应运而生。
 
  	基于ajax+history.pushState的新技术，该技术可以无刷新改变页面的内容，并且可以改变页面的URL。HTML5的新API扩展了window.history，使历史记录点更加开放了。可以存储当前历史记录点、替换当前历史记录点、监听历史记录点。github上有开源 [项目地址](https://github.com/defunkt/jquery-pjax),可以查看文档，不过已经很久没有更新了。
 
-#### 			这里写了一个小例子  
+​				这里写了一个小例子  
 
 ​				当点击超链接时 	pjax会获取url  发送返回后获取html片段
 
@@ -203,7 +210,7 @@ $(document).on('click', 'a[target!=_blank]', function () {
 
 ```
 
-#### 			上面的js在[我的github](https://github.com/git-jzzz/git-jzzz.github.io/tree/master/js/src)上有,这里提供一个loading加载动画:
+​			上面的js在[我的github](https://github.com/git-jzzz/git-jzzz.github.io/tree/master/js/src)上有,这里提供一个loading加载动画:
 
 ```html
 <head>
@@ -288,7 +295,9 @@ $(document).on('click', 'a[target!=_blank]', function () {
 
 
 
-#### 		当我的hexo使用pjax时出现了一些bug,比如评论不加载、文章无内容、侧边栏消失,估计应该是hexo加载css是模板的原因吧,所以样式丢失,无效。这里记录一下:
+​		样式丢失
+
+​		当我的hexo使用pjax时出现了一些bug,比如评论不加载、文章无内容、侧边栏消失,估计应该是hexo加载css是模板的原因吧,所以样式丢失,无效。这里记录一下:
 
 ```javascript
 function opacity_js() {
@@ -388,7 +397,7 @@ function valine(){
 
 
 
-# 看到左下角那个萌萌哒的看板娘了吗?
+## 看到左下角那个萌萌哒的看板娘了吗?
 
 放到你所需要的位置即可:
 
@@ -424,7 +433,7 @@ function valine(){
 </script>
 ```
 
-# hexo源码保存:
+## hexo源码保存:
 
 ​					hexo默认上传的是编译后的文件,源码是不上传的,如果这时候电脑坏了，那么就会导致之前的配置丢失,就很麻烦,所以我们可以把hexo源码也保存到git:但是再开一个git项目优点多余了,所以我们可以将hexo源码保存到此项目分支中保存,每次更改配置后就可以直接上传.
 
@@ -443,7 +452,7 @@ git push origin name #推送分支到github
 
 如果你的主题是直接clone下来的  是无法直接提交的
 
-### 使用git submodule 实现第三方主题同步:
+使用git submodule 实现第三方主题同步:
 
 我们可以把主题的项目Fork到自己的仓库  然后备份你之前的主题文件 
 
@@ -500,3 +509,41 @@ hexo s #启动hexo本地服务器
 
 
 
+## hexo以及github访问太慢的问题:
+
+github的CDN被墙了，由于网络代理商的原因，所以访问下载很慢，我们可以绕过dns解析；
+
+直接在本地绑定host  
+
+前往[站长之家](http://tool.chinaz.com/)查询你对应的 username.github.io  解析dns   复制最快的解析
+
+打开 C:\Windows\System32\drivers\etc\host 文件  写入；
+
+如: 
+
+```host
+
+# GItHub
+185.199.111.153	git-jzzz.github.io
+13.229.188.59	github.com
+199.232.5.194	github.global.ssl.fastly.net
+
+103.245.222.133 assets-cdn.github.com
+23.235.47.133 assets-cdn.github.com
+203.208.39.104 assets-cdn.github.com
+204.232.175.78 documentcloud.github.com
+204.232.175.94 gist.github.com
+107.21.116.220 help.github.com
+207.97.227.252 nodeload.github.com
+199.27.76.130 raw.github.com	
+107.22.3.110 status.github.com
+204.232.175.78 training.github.com
+207.97.227.243 www.github.com
+185.31.16.184 github.global.ssl.fastly.net
+185.31.18.133 avatars0.githubusercontent.com
+185.31.19.133 avatars1.githubusercontent.com
+```
+
+windows打开cmd控制器  输入ipconfig /flushdns 刷新dns  再次访问  速度有很大提升；
+
+# 
