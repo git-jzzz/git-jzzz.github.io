@@ -4,17 +4,18 @@
 
 
 # Site
-title: jzz的个人博客
+title: jz的个人博客
 subtitle: ''
 description: ''
 keywords:
-author: jzz 
+author: jz
 language: zh-Hans
 timezone: ''
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://jzzs.xn--ses554g
+#url: https://jzzs.xn--ses554g
+url: https://jzai.xyz
 root: /
 # url优化插件  npm install hexo-abbrlink --save
 permalink: post/:abbrlink.html
@@ -43,7 +44,10 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
+#跳过渲染
 skip_render:
+  - index.html
+  - 404.html
   - CNAME
   - README.md
   - baidu_verify_U0EYg4ME7B.html
@@ -127,11 +131,12 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-- type: baidu_url_submitter  ##新添加
+- type: baidu_url_submitter  ##新添加 百度推送
 - type: git
   repo: 
     github: https://github.com/git-jzzz/git-jzzz.github.io.git
-    coding: https://e.coding.net/jzzs/jzzs.git
+    #coding: https://e.coding.net/jzzs/jzzs.git
+    #gitee: https://gitee.com/git-jzzz/git-jzzz.git   //pro才可域名解析  
   branch: master
 
 # Extensions
@@ -175,6 +180,7 @@ neat_js:
     - '**/*.min.js'
     - '**/jquery.fancybox.pack.js'
     - '**/index.js' 
+    - '**/now.json'
 sitemap:
   path: sitemap.xml    
 baidusitemap: 
@@ -182,7 +188,7 @@ baidusitemap:
 
 baidu_url_submit:
   count: 3 ## 比如3，代表提交最新的三个链接
-  host: jzzs.xn--ses554g  ## 在百度站长平台中注册的域名
+  host: jzai.xyz  ## 在百度站长平台中注册的域名
   token: {hOtvnAtFPNpaw5MP} ## 请注意这是您的秘钥，请不要发布在公众仓库里!
   path: baidu_urls.txt ## 文本文档的地址，新链接会保存在此文本文档里
 # Easily enable fast Ajax navigation on your website.
@@ -191,5 +197,5 @@ baidu_url_submit:
 nofollow:
     enable: true
     exclude:
-    - https://jzzs.xn--ses554g
+    - https://jzai.xyz
 

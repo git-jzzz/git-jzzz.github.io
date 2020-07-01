@@ -13,7 +13,7 @@ keywords:
   - pjax
   - 域名
   - github/coding双线部署
-description: <pre>					记录一下hexo的详细搭建过程<br/>			初步搭建hexo、主题风格设置、Aplayer播放器	pjax无刷新加载、看板娘<br/>		hexo源码保存、github/coding双线部署提速、设置域名访问、提交搜索引擎/seo优化<br/>					warning:一开始我只想弄个全局播放器........</pre>
+description: <pre>					记录一下hexo的详细搭建过程<br/>			初步搭建hexo、主题风格设置、Aplayer播放器	pjax无刷新加载、看板娘<br/>		   hexo源码保存、github/coding双线部署提速、设置域名访问、提交搜索引擎/seo优化<br/>					warning:一开始我只想弄个全局播放器........</pre>
 abbrlink: 5d5a4712
 date: 2020-06-01 20:14:55
 ---
@@ -454,7 +454,7 @@ git push origin name #推送分支到github
 
 使用git submodule 实现第三方主题同步:
 
-我们可以把主题的项目Fork到自己的仓库  然后备份你之前的主题文件 
+我们可以把主题的仓库Fork到自己的仓库  然后备份你之前的主题文件 
 
  hexo根目录 git clone 自己账号下的主题url,以next主题为例:
 
@@ -558,15 +558,61 @@ github毕竟是国外的网站，访问起来经常丢失，很恼火呀有木�
 
 链接码上:
 
-[coding首页]([https://jzzs.coding.net](https://jzzs.coding.net/))
+[coding首页]([https://jzzs.coding.net](https://jzzs.coding.net/))      [阿里云解析](https://dns.console.aliyun.com/#/dns/domainList)
 
-[阿里云解析](https://dns.console.aliyun.com/#/dns/domainList)
-
-[CSDN 博客园，简书 主页 自定义域名](https://blog.csdn.net/a1064072510/article/details/90442555)
-
-[hexo自定义域名以及解析](https://blog.csdn.net/xfdywy/article/details/79720070)
+[CSDN 博客园，简书 主页 自定义域名](https://blog.csdn.net/a1064072510/article/details/90442555)     [hexo自定义域名以及解析](https://blog.csdn.net/xfdywy/article/details/79720070)
 
 [加速自己的hexo，使用GitHub+Coding实现国内外网站加速](https://www.cnblogs.com/sunhang32/p/11969964.html)
+
+## hexo部署到Vercel
+
+---------------------------------------------更新---------------------------------------------
+
+​			经过部署之后呢  还没到朋友面前装逼   问题来了  由于github经常被墙，访问速度是很慢的。。。。。。
+
+ coding吧，也好不了多少   一天给你断个百分之八十的访问吧。。。。这就很烦啦，直接无响应啊喂！！！！！
+
+比较无语  辛辛苦苦弄了好几天  难道只能本地访问,自然是不甘心的...所以疯狂找>>>>>[度娘](https://www.baidu.com/)
+
+解决方式呢  自然是有的！
+
+1:买台服务器部署						2:部署在[码云](https://gitee.com/)上
+
+​      		 很遗憾,作为一个白嫖党,是付不起服务器这个钱的，  何况我搭个博客 说不定后天就没兴致了（狗头）对吧。部署在码云上，作为中国的github，访问速度自然是飞快，但是自定义域名需要99rmb开通标准版才能....咳咳咳
+
+​			所以呢经过多次百度百科之后，瞅见了Vercel[官网](https://vercel.com)。Vercel:原名Zeit Now 更改了名字 但是服务没改,依旧可以托管我们的静态网页: 到这里了,相信你已经拥有了一个github仓库了吧>>>访问[官网](https://vercel.com):
+
+{% asset_img 1.PNG login %}{% asset_img 2.PNG	选择github %}选择github登录  
+
+导入仓库{% asset_img 3.PNG import %}   选择导入github仓库 {% asset_img 4.PNG github项目 %}
+
+选择你的hexo项目地址  记住  这里的项目是你提交的静态文件   如果你和我一样把hexo源文件放在一起  就先去github设置你的默认分支为  博客静态文件那个分支  否则导入则会失败  之后再设置回来即可
+
+{% asset_img 5.PNG select %}  
+
+可以把项目名换掉~等待一段时间   导入就会成功啦。  这时候你可以通过右边的链接访问你的博客啦~~
+
+{% asset_img 6.PNG 访问地址 %}
+
+​			当然你也可以通过项目的 Setting》》》Domains  填写你的域名  Add即可  会叫你解析  但是我试了下  比他自己的有时候要慢一点,可能因为域名也是白嫖来的hhhh。
+
+​		可以通过 [站长工具](https://tool.chinaz.com/dns/)查询网站速度~可以看到访问速度有很大的提升！
+
+{% asset_img 7.PNG 查询速度 %}
+
+所以你如果想自定义域名的话,解析域名那里  把github的二级域名设置为国外就行了
+
+这样国内访问你的域名是访问的是Vercel提供的,国外访问你的域名则是github提供(hhhhh你可以去 [站长工具](https://tool.chinaz.com/dns/)设置国内国外都去访问一下你的域名~
+
+如果要更改github.io 域名     Custom domain修改  CNAME文件修改
+
+一般还会指向你之前的域名   只要清空浏览器缓存就可以了。
+
+-----------------------------------------------------------
+
+我觉得吧   貌似  username.github.io可以关闭呀..Vercel全球网速感觉都可以  就没必把域名开着了..
+
+搞不太懂.....  还有username.github.io转过来域名是不是访问的github上的服务器呢。唔.....
 
 ## hexo提交搜索引擎
 
