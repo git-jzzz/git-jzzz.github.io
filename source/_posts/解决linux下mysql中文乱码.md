@@ -5,7 +5,7 @@ tags:
   - mysql
   - bug
 categories:
-  - bug解决	集锦
+  - bug解决大全
 keywords:
   - linux
   - mysql

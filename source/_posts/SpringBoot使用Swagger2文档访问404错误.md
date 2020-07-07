@@ -5,7 +5,7 @@ tags:
   - springboot
   - swagger
 categories:
-  - bug解决集锦
+  - bug解决大全
 copyright: true
 keywords:
   - bug
