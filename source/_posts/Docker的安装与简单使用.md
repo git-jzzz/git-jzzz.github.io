@@ -5,7 +5,7 @@ categories:
   - Docker
   - 工具
 copyright: true
-description: "<pre>\t\t\t\tDocker是一个虚拟环境容器，可以将你的开发环境、代码、配置文件等一并打包到这个容器中,并发布到任意平台中<pre>"
+description: "<pre>\t\t\t\tDocker是一个虚拟环境容器，可以将你的开发环境、代码、配置文件等一并打包到这个容器中,并发布到任意平台中</pre>"
 abbrlink: 830c686a
 date: 2020-07-23 09:32:38
 keywords:
