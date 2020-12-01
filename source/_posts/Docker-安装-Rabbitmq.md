@@ -4,7 +4,7 @@ tags:
   - Docker
 categories: Docker
 copyright: true
-description: "<pre>\t\t\t\t使用Docker安装Rabbitmq</pre>"
+description: "<pre>\t\t\t\t\t	使用Docker安装Rabbitmq</pre>"
 abbrlink: b3b7cc65
 date: 2020-07-24 11:17:23
 keywords:
@@ -60,8 +60,7 @@ c2d8883595f4        mysql:5.7                                "docker-entrypoint.
 
 ~~~http
 http://{ip}:15672
+用户名/密码   guest/guest
 ~~~
 
-{% asset_img j.jpg web界面 %}
-
-用户名/密码 guest/guest
+{% asset_img psc.jpg web界面 %}

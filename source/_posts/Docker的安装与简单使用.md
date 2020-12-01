@@ -31,25 +31,96 @@ Docker可以安装在Windows、linux、Mac等多个平台上，详细查看文�
 
 [Install Docker Engine](https://docs.docker.com/engine/install/)
 
-centos:
+### centos:
+
+- #### 更新yum包    
+
+- yum update       (升级所有包同时升级软件和系统内核   生产环境慎用)
+
+- yum upgrade     (只升级所有包，不升级软件和系统内核 )
 
 ~~~linux
-yum install -y docker
+yum update
 ~~~
 
 -y  表示不询问，使用默认配置进行安装
 
-### 验证是否安装成功
+#### 安装需要的软件包， yum-util 提供yum-config-manager功能，另外两个是devicemapper驱动依赖的
 
 ~~~linux
-[root@localhost ~]# yum list installed | grep docker
-docker-ce.x86_64                     18.03.1.ce-1.el7.centos        @docker-ce-stable
+[root@localhost ~]# yum install -y yum-utils device-mapper-persistent-data lvm2
+~~~
+
+#### 设置yum源
+
+~~~linux
+[root@localhost ~]# yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+~~~
+
+#### 查看仓库中所有docker版本
+
+~~~linux
+[root@192 ~]# yum list docker-ce --showduplicates | sort -r
+已加载插件：fastestmirror, product-id, search-disabled-repos, subscription-manager
+可安装的软件包
+ * updates: ftp.sjtu.edu.cn
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+Loading mirror speeds from cached hostfile
+ * extras: ftp.sjtu.edu.cn
+docker-ce.x86_64            3:19.03.9-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:19.03.8-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:19.03.7-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:19.03.6-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:19.03.5-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:19.03.4-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:19.03.3-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:19.03.2-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:19.03.1-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:19.03.12-3.el7                    docker-ce-stable
+docker-ce.x86_64            3:19.03.11-3.el7                    docker-ce-stable
+docker-ce.x86_64            3:19.03.10-3.el7                    docker-ce-stable
+docker-ce.x86_64            3:19.03.0-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.9-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.8-3.el7                     docker-ce-stable
+docker-ce.x86_64            3:18.09.7-3.el7                     docker-ce-stable
+
+~~~
+
+#### 选择版本安装 yum install docker-ce-version
+
+~~~linux
+[root@192 ~]# yum install docker-ce-18.03.1.ce
+已加载插件：fastestmirror, product-id, search-disabled-repos, subscription-manager
+
+This system is not registered with an entitlement server. You can use subscription-manager to register.
+
+Loading mirror speeds from cached hostfile
+ * base: ftp.sjtu.edu.cn
+ * extras: ftp.sjtu.edu.cn
+ * updates: ftp.sjtu.edu.cn
+正在解决依赖关系
+--> 正在检查事务
+---> 软件包 docker-ce.x86_64.0.18.03.1.ce-1.el7.centos 将被 安装
+--> 正在处理依赖关系 pigz，它被软件包 docker-ce-18.03.1.ce-1.el7.centos.x86_64 需要
+--> 正在检查事务
+---> 软件包 pigz.x86_64.0.2.3.3-1.el7.centos 将被 安装
+--> 解决依赖关系完成
+
+依赖关系解决
+.........................
+安装  1 软件包 (+1 依赖软件包)
+
+总下载量：35 M
+安装大小：35 M
+Is this ok [y/d/N]: y
 
 ~~~
 
 
 
-安装之后查看版本信息  出现 Client  Server安装成功
+
+
+#### 安装之后查看版本信息  出现 Client  Server安装成功
 
 ~~~linux
 [root@localhost ~]# docker version
@@ -76,48 +147,25 @@ Server:
 
 ~~~
 
-### 启动docker服务
-
-systemctl start docker
-
-查看状态
+#### 启动Docker
 
 ~~~linux
-[root@localhost ~]# systemctl status docker
-● docker.service - Docker Application Container Engine
-   Loaded: loaded (/usr/lib/systemd/system/docker.service; enabled; vendor preset: disabled)
-   Active: active (running) since Wed 2020-07-22 20:43:25 EDT; 1h 4min ago
-     Docs: https://docs.docker.com
- Main PID: 2859 (dockerd)
-    Tasks: 19
-   Memory: 271.3M
-   CGroup: /system.slice/docker.service
-           ├─2859 /usr/bin/dockerd
-           └─2863 docker-containerd --config /var/run/docker/containerd/containerd.toml
-
-Jul 22 21:24:28 localhost.localdomain dockerd[2859]: time="2020-07-22T21:24:28.717465533-04:00" level=info msg="ignoring event" module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
-Jul 22 21:25:43 localhost.localdomain dockerd[2859]: time="2020-07-22T21:25:43-04:00" level=info msg="shim docker-containerd-shim started" address="/containerd-shim/moby/ba0f7e1e3f0d9b1f5f3114a6b3d7d93ec5e9baa70dab0e1c9ec6.../tasks" pid=3424
-Jul 22 21:28:28 localhost.localdomain dockerd[2859]: time="2020-07-22T21:28:28-04:00" level=info msg="shim reaped" id=ba0f7e1e3f0d9b1f5f3114a6b3d7d93ec5e9baa70dab0e1c9ec6439206e77d5c module="containerd/tasks"
-Jul 22 21:28:28 localhost.localdomain dockerd[2859]: time="2020-07-22T21:28:28.481777187-04:00" level=info msg="ignoring event" module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
-Jul 22 21:28:37 localhost.localdomain dockerd[2859]: time="2020-07-22T21:28:37-04:00" level=info msg="shim docker-containerd-shim started" address="/containerd-shim/moby/ba0f7e1e3f0d9b1f5f3114a6b3d7d93ec5e9baa70dab0e1c9ec6.../tasks" pid=3552
-Jul 22 21:29:06 localhost.localdomain dockerd[2859]: time="2020-07-22T21:29:06.864033257-04:00" level=info msg="Attempting next endpoint for pull after error: manifest unknown: manifest unknown"
-Jul 22 21:29:13 localhost.localdomain dockerd[2859]: time="2020-07-22T21:29:13.696139768-04:00" level=error msg="Not continuing with pull after error: errors:\ndenied: requested access to the resource is denied\nunauthoriz...tion required\n"
-Jul 22 21:29:13 localhost.localdomain dockerd[2859]: time="2020-07-22T21:29:13.696184767-04:00" level=info msg="Ignoring extra error returned from registry: unauthorized: authentication required"
-Jul 22 21:40:22 localhost.localdomain dockerd[2859]: time="2020-07-22T21:40:22-04:00" level=info msg="shim reaped" id=ba0f7e1e3f0d9b1f5f3114a6b3d7d93ec5e9baa70dab0e1c9ec6439206e77d5c module="containerd/tasks"
-Jul 22 21:40:22 localhost.localdomain dockerd[2859]: time="2020-07-22T21:40:22.855205392-04:00" level=info msg="ignoring event" module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
-Hint: Some lines were ellipsized, use -l to show in full.
+[root@192 ~]# systemctl start docker
 ~~~
 
-### docker images  查看镜像
+#### 查看镜像验证启动  (刚下载  无镜像)
 
 ~~~linux
-[root@localhost ~]# docker images
+[root@192 ~]# docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-gitjzz/centos       git                 3fcad1be9818        26 minutes ago      332MB
-mysql               5.7                 8679ced16d20        6 hours ago         448MB
-mysql               latest              e3fcc9e1cc04        6 hours ago         544MB
-centos              latest              831691599b88        5 weeks ago         215MB
-[root@localhost ~]# 
+[root@192 ~]# 
+~~~
+
+#### 开机启动docker
+
+~~~linux
+[root@192 ~]# systemctl enable docker
+Created symlink from /etc/systemd/system/multi-user.target.wants/docker.service to /usr/lib/systemd/system/docker.service.
 
 ~~~
 
