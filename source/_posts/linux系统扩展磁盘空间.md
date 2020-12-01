@@ -4,7 +4,7 @@ tags:
   - linux
   - 磁盘
 categories: bug解决大全
-copyright: true
+copyright: false
 description："<pre>\t\t\t\tVmware使用docker拉取镜像时失败: no space left on device</pre>"
 abbrlink: 270c8d8b
 date: 2020-07-27 09:22:55

@@ -4,7 +4,7 @@ tags:
   - SpringBoot
   - 日志
 categories: SpringBoot
-copyright: true
+copyright: false
 description: "<pre>\t\t\t\t\t使用lombok记录日志，控制台打印日志高亮，输出文件到指定目录</pre>"
 abbrlink: f400a6d1
 date: 2020-07-25 14:12:57

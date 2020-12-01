@@ -5,7 +5,7 @@ tags:
   - mysql
 categories:
   - Docker
-copyright: true
+copyright: false
 description: "<pre>\t\t\t\tDocker安装mysql，快速部署，设置字符集防止中文乱码</pre>"
 abbrlink: 5655b191
 date: 2020-07-24 09:35:45

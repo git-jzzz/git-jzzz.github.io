@@ -3,7 +3,7 @@ title: Docker 安装 Rabbitmq
 tags:
   - Docker
 categories: Docker
-copyright: true
+copyright: false
 description: "<pre>\t\t\t\t\t	使用Docker安装Rabbitmq</pre>"
 abbrlink: b3b7cc65
 date: 2020-07-24 11:17:23

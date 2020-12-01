@@ -2,7 +2,7 @@
 title: google浏览器安装JsonView插件
 tags: 工具
 categories: 工具
-copyright: true
+copyright: false
 description: "<pre>\t\t\t\t安装JsonView插件后，访问后端返回的数据可格式化为json形式</pre>"
 abbrlink: f4543ee0
 date: 2020-07-04 08:18:38

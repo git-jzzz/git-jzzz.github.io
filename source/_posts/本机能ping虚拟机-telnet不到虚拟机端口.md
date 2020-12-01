@@ -9,7 +9,7 @@ categories:
 description: "<pre>\t\t\t\tcentos7设置固定ip后网络正常访问，能ping到ip，telnet不到具体端的问题。</pre>"
 abbrlink: a7ec9c11
 date: 2020-06-29 11:41:21
-copyright:
+copyright: false
 keywords:
 ---
 

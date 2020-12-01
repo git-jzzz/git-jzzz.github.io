@@ -13,7 +13,7 @@ keywords:
 description: <pre>			通过tar.taz安装mysql,在数据插入时中文会乱码<br/>				通过配置my.cnf文件进行处理</pre>
 abbrlink: 1856c8ad
 date: 2020-06-17 16:49:55
-copyright: true
+copyright: false
 ---
 
 ## 查询mysql字符集

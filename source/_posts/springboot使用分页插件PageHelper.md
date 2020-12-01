@@ -2,7 +2,7 @@
 title: springboot使用分页插件PageHelper
 tags: 工具
 categories: 工具
-copyright: true
+copyright: false
 description: "<pre>\t\t\t\t使用分页插件PageHelper减少开发工作，提高效率</pre>"
 abbrlink: 74e44cd
 date: 2020-07-04 15:41:52

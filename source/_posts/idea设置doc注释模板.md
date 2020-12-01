@@ -2,7 +2,7 @@
 title: idea设置doc注释模板
 tags: idea
 categories: 工具
-copyright: true
+copyright: false
 description: <pre>					idea中使用模板快速生成doc注释</pre>
 abbrlink: b8329979
 date: 2020-07-24 16:27:31

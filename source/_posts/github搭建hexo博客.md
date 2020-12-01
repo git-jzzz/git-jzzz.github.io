@@ -4,7 +4,7 @@ tags:
   - hexo搭建
 categories:
   - hexo
-copyright: true
+copyright: false
 keywords:
   - HEXO
   - HEXO部署

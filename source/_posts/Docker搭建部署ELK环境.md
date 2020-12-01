@@ -3,7 +3,7 @@ title: docker搭建部署ELK环境-SpringBoot集成ELK
 tags:
   - Docker
 categories: 工具
-copyright: true
+copyright: false
 description: "<pre>\t\t\t\tDocker快速部署ELK环境 SpringBoot日志集成</pre>"
 abbrlink: e611022d
 date: 2020-07-27 13:57:29
