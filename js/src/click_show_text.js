@@ -1,3 +1,3 @@
-// build time:Sat Jan 16 2021 18:50:37 GMT+0800 (GMT+08:00)
+// build time:Tue Jan 19 2021 18:52:50 GMT+0800 (GMT+08:00)
 var a_idx=0;jQuery(document).ready(function(a){a("body").click(function(e){var o=new Array("程序猿","Java","Mysql","JavaScript","前后端分离","layui","vue","database","么么","SSM","SpringBoot","SpringCloud","Linux","redis","WebSocket","idea","Docker","Jekins");var t=a("<span/>").text(o[a_idx]);a_idx=(a_idx+1)%o.length;var i=e.pageX,n=e.pageY;t.css({"z-index":5,top:n-20,left:i,position:"absolute","font-weight":"bold",color:"rgb("+~~(255*Math.random())+","+~~(255*Math.random())+","+~~(255*Math.random())+")"});a("body").append(t);t.animate({top:n-180,opacity:0},3e3,function(){t.remove()})});setTimeout("delay()",2e3)});function delay(){$(".buryit").removeAttr("onclick")}
 //rebuild by neat 
